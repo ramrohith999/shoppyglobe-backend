@@ -10,6 +10,10 @@ const authRoutes = require(
   "./routes/authRoutes"
 );
 
+const protect = require(
+  "./middleware/authMiddleware"
+);
+
 require("dotenv").config();
 
 const connectDB = require("./config/db");
@@ -27,6 +31,17 @@ app.get("/", (req, res) => {
   });
 });
 
+app.get(
+  "/protected",
+  protect,
+  (req, res) => {
+    res.json({
+      message:
+        "Protected route accessed",
+      user: req.user,
+    });
+  }
+);
 
 
 
