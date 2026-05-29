@@ -1,6 +1,11 @@
 const express = require("express");
 const cors = require("cors");
 
+
+const productRoutes = require(
+  "./routes/productRoutes"
+);
+
 require("dotenv").config();
 
 const connectDB = require("./config/db");
@@ -17,6 +22,9 @@ app.get("/", (req, res) => {
     message: "ShoppyGlobe API Running",
   });
 });
+
+
+app.use("/products", productRoutes);
 
 const PORT = process.env.PORT || 5000;
 
