@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 const addToCart = async (req, res) => {
   try {
     const { productId, quantity } = req.body;
-
+    //addd validation
     if (!productId) {
       return res.status(400).json({
         message: "Product ID is required",

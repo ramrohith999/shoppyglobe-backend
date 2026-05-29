@@ -1,4 +1,6 @@
-const errorHandler = (
+//error handler midleware
+
+ const errorHandler = (
   err,
   req,
   res,
