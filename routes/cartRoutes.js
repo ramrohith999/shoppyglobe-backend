@@ -10,6 +10,7 @@ const {
   addToCart,
   updateCartItem,
   deleteCartItem,
+  getCartItems,
 } = require(
   "../controllers/cartController"
 );
@@ -27,5 +28,7 @@ router.delete(
   protect,
   deleteCartItem
 );
+
+router.get("/", protect, getCartItems);
 
 module.exports = router;

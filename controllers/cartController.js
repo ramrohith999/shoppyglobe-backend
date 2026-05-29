@@ -109,8 +109,24 @@ const deleteCartItem = async (req, res) => {
   }
 };
 
+// GET USER CART
+const getCartItems = async (req, res) => {
+  try {
+    const cartItems = await Cart.find({
+      userId: req.user.userId,
+    }).populate("productId");
+
+    res.status(200).json(cartItems);
+  } catch (error) {
+    res.status(500).json({
+      message: "Failed to fetch cart",
+    });
+  }
+};
+
 module.exports = {
   addToCart,
   updateCartItem,
   deleteCartItem,
+  getCartItems,
 };
