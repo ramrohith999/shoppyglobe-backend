@@ -18,6 +18,10 @@ const cartRoutes = require(
   "./routes/cartRoutes"
 );
 
+const errorHandler = require(
+  "./middleware/errorMiddleware"
+);
+
 require("dotenv").config();
 
 const connectDB = require("./config/db");
@@ -52,6 +56,8 @@ app.get(
 app.use("/products", productRoutes);
 app.use("/", authRoutes);
 app.use("/cart", cartRoutes);
+
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 
