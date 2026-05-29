@@ -84,10 +84,12 @@ const loginUser = async (req, res) => {
       token,
     });
   } catch (error) {
-    res.status(500).json({
-      message: "Login failed",
-    });
-  }
+  console.log(error);
+
+  res.status(500).json({
+    message: error.message,
+  });
+}
 };
 
 module.exports = {
