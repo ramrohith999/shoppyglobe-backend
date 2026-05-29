@@ -6,6 +6,10 @@ const productRoutes = require(
   "./routes/productRoutes"
 );
 
+const authRoutes = require(
+  "./routes/authRoutes"
+);
+
 require("dotenv").config();
 
 const connectDB = require("./config/db");
@@ -24,7 +28,10 @@ app.get("/", (req, res) => {
 });
 
 
+
+
 app.use("/products", productRoutes);
+app.use("/", authRoutes);
 
 const PORT = process.env.PORT || 5000;
 
